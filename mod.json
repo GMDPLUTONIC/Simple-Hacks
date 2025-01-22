@@ -10,5 +10,9 @@
 	"name": "Simple Noclip",
 	"version": "v1.0.0",
 	"developer": "GMP",
-	"description": ""
+	"description": "",
+	"tags": ["cheat", "gameplay"],
+	"dependencies": {
+		"alphalaneous.pages_api": "v1.4.5"
+	}
 }

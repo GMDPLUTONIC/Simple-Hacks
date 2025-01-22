@@ -12,12 +12,12 @@ class $modify(MyMenuLayer, MenuLayer) {
 		log::debug("Hello from my MenuLayer::init hook! This layer has {} children.", this->getChildrenCount());
 
 		auto simpleNoclipButton = CCMenuItemSpriteExtra::create(
-			CCSprite::createWithSpriteFrameName("GJ_everyplayBtn_001.png"),
+			CCSprite::createWithSpriteFrameName("GJ_gpgBtn_001.png"),
 			this,
 			menu_selector(MyMenuLayer::onSimpleNoclipButton)
 		);
 
-		auto menu = this->getChildByID("right-side-menu");
+		auto menu = this->getChildByID("side-menu");
 		menu->addChild(simpleNoclipButton);
 
 		simpleNoclipButton->setID("simple-noclip-button"_spr);
