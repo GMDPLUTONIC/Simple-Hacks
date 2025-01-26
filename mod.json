@@ -6,13 +6,10 @@
 		"mac": "2.2074",
 		"ios": "2.2074"
 	},
-	"id": "gmp.simple_noclip",
-	"name": "Simple Noclip",
+	"id": "gmp.simple_hacks",
+	"name": "Simple Hacks",
 	"version": "v1.0.0",
 	"developer": "GMP",
 	"description": "",
-	"tags": ["cheat", "gameplay"],
-	"dependencies": {
-		"alphalaneous.pages_api": "v1.4.5"
-	}
+	"tags": ["cheat", "gameplay", "enhancement", "universal"]
 }
