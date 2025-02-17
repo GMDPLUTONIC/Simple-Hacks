@@ -1,12 +1,9 @@
-#include <Geode/Geode.hpp>
-#include <Geode/binding/MenuLayer.hpp>
-#include <Geode/loader/GameEvent.hpp>
+#include "includes.hpp"
 
 using namespace geode::prelude;
 
-#include <Geode/modify/MenuLayer.hpp>
+class $modify(SimpleHacksMenuLayer, MenuLayer) {
 
-class $modify(SimpleHacksLayer, MenuLayer) {
 	bool init() {
 		if (!MenuLayer::init()) {
 		return false;
@@ -14,11 +11,7 @@ class $modify(SimpleHacksLayer, MenuLayer) {
 
 		log::error("Lil Darkie once said: Drink Piss You Nasty Slut Yeah Yeah");
 
-		auto simpleHacksBtn = CCMenuItemSpriteExtra::create(
-			CCSprite::createWithSpriteFrameName("GJ_gpgBtn_001.png"),
-			this,
-			menu_selector(SimpleHacksLayer::onSimpleHacksBtn)
-		);
+		auto simpleHacksBtn = CCMenuItemSpriteExtra::create(CCSprite::createWithSpriteFrameName("GJ_gpgBtn_001.png"), this, menu_selector(SimpleHacksMenuLayer::onSimpleHacksBtn));
 
 		auto menu = this->getChildByID("side-menu");
 		menu->addChild(simpleHacksBtn);
@@ -33,36 +26,33 @@ class $modify(SimpleHacksLayer, MenuLayer) {
 	void onSimpleHacksBtn(CCObject*) {
         FLAlertLayer::create("Simple Hacks:", "This Mod Adds Some Simple Hacks To The Game Like: Noclip, Icon Hack, Verify Hack, And More!", "Close")->show();
 	}
+
 };
 
-	#include <Geode/modify/PlayLayer.hpp>
     class $modify(NoclipLayer, PlayLayer) {
-        void destroyPlayer(PlayerObject* player, GameObject* object) override {
-            if (object == m_anticheatSpike) {
-                return PlayLayer::destroyPlayer(player, object);
-            }
+
+        void destroyPlayer(PlayerObject * player, GameObject * p1) {
         }
+
     };
 
-	#include <Geode/modify/GameManager.hpp>
-	#include <Geode/modify/GameStatsManager.hpp>
 	class $modify(IconHackLayer, GameStatsManager) {
+
         bool isItemUnlocked(UnlockType type, int key) {
             if (GameStatsManager::isItemUnlocked(type, key));
             return true;
         }
+
     };
 
-    #include <Geode/modify/EditLevelLayer.hpp>
-
     class $modify(VerifyHackLayer, EditLevelLayer) {
+
         bool init(GJGameLevel* gl) {
             gl->m_isVerified = true;
             return EditLevelLayer::init(gl);
         }
+
     };
-    
-	#include <Geode/modify/GameLevelManager.hpp>
 
 	class $modify(AllMainLevelsLayer, GameLevelManager) {
 
@@ -73,18 +63,16 @@ class $modify(SimpleHacksLayer, MenuLayer) {
             }
             return level;
         }
+
     };
-	
-	#include <Geode/modify/GJBaseGameLayer.hpp>
 
 	class $modify(NoLevelKickLayer, GJBaseGameLayer) {
 
         bool shouldExitHackedLevel() { return false; }
+
     };
 
-    #include <Geode/modify/SliderTouchLogic.hpp>
-
-    class $modify(NoSliderLimitLayer, SliderTouchLogic) {
+    class $modify(NoSliderLimitLogic, SliderTouchLogic) {
 
         void ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event) override {
             auto touchPos = this->convertTouchToNodeSpace(touch);
@@ -103,4 +91,5 @@ class $modify(SimpleHacksLayer, MenuLayer) {
             if (auto* slider = this->m_slider)
                 slider->updateBar();
         }
+
     };
