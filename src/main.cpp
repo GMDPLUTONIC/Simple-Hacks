@@ -3,7 +3,6 @@
 using namespace geode::prelude;
 
 class $modify(SimpleHacksMenuLayer, MenuLayer) {
-
 	bool init() {
 		if (!MenuLayer::init()) {
 		return false;
@@ -26,36 +25,28 @@ class $modify(SimpleHacksMenuLayer, MenuLayer) {
 	void onSimpleHacksBtn(CCObject*) {
         FLAlertLayer::create("Simple Hacks:", "This Mod Adds Some Simple Hacks To The Game Like: Noclip, Icon Hack, Verify Hack, And More!", "Close")->show();
 	}
-
 };
 
     class $modify(NoclipLayer, PlayLayer) {
-
         void destroyPlayer(PlayerObject * player, GameObject * p1) {
         }
-
     };
 
 	class $modify(IconHackLayer, GameStatsManager) {
-
         bool isItemUnlocked(UnlockType type, int key) {
             if (GameStatsManager::isItemUnlocked(type, key));
             return true;
         }
-
     };
 
     class $modify(VerifyHackLayer, EditLevelLayer) {
-
         bool init(GJGameLevel* gl) {
             gl->m_isVerified = true;
             return EditLevelLayer::init(gl);
         }
-
     };
 
 	class $modify(AllMainLevelsLayer, GameLevelManager) {
-
         GJGameLevel* getMainLevel(int levelID, bool dontGetLevelString) {
             auto level = GameLevelManager::getMainLevel(levelID, dontGetLevelString);
             if (level->m_requiredCoins > 0) {
@@ -63,17 +54,13 @@ class $modify(SimpleHacksMenuLayer, MenuLayer) {
             }
             return level;
         }
-
     };
 
 	class $modify(NoLevelKickLayer, GJBaseGameLayer) {
-
         bool shouldExitHackedLevel() { return false; }
-
     };
 
     class $modify(NoSliderLimitLogic, SliderTouchLogic) {
-
         void ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event) override {
             auto touchPos = this->convertTouchToNodeSpace(touch);
             auto position = touchPos - this->m_position;
@@ -91,5 +78,4 @@ class $modify(SimpleHacksMenuLayer, MenuLayer) {
             if (auto* slider = this->m_slider)
                 slider->updateBar();
         }
-
     };
