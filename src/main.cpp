@@ -8,8 +8,6 @@ class $modify(SimpleHacksMenuLayer, MenuLayer) {
 		return false;
 		}
 
-		log::error("Lil Darkie once said: Drink Piss You Nasty Slut Yeah Yeah");
-
 		auto simpleHacksBtn = CCMenuItemSpriteExtra::create(CCSprite::createWithSpriteFrameName("GJ_gpgBtn_001.png"), this, menu_selector(SimpleHacksMenuLayer::onSimpleHacksBtn));
 
 		auto menu = this->getChildByID("side-menu");
